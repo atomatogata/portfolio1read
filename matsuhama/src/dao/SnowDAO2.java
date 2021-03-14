@@ -38,4 +38,18 @@ public class SnowDAO2 {
 		}
 		return list;
 	}
+
+	public void insert(String name, String text) {
+
+		try (Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS)) {
+
+			String sql = "INSERT INTO SNOWREQUEST VALUES('" + name + "', '" + text + "')";
+			Statement smt = con.createStatement();
+			smt.executeUpdate(sql);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
