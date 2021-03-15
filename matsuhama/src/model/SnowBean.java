@@ -3,7 +3,6 @@ package model;
 public class SnowBean {
 	private String name;
 	private String text;
-	private int age;
 
 	public SnowBean() {
 	};

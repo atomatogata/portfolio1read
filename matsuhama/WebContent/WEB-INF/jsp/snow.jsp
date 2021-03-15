@@ -4,8 +4,6 @@
 
 <%
 List<SnowBean> list = (List<SnowBean>)request.getAttribute("list");
-String hoge = (String)session.getAttribute("hoge");
-
 %>
 <!DOCTYPE html>
 <html>
@@ -16,7 +14,9 @@ String hoge = (String)session.getAttribute("hoge");
 <body>
 snow
 <a href="/matsuhama/WelcomServlet">書き込む</a>
-
-
+<% for(int i = 0;i < list.size();i++) { %>
+<p><%= list.get(i).getName() %></p>
+<p><%= list.get(i).getText() %></p>
+<% } %>
 </body>
 </html>
