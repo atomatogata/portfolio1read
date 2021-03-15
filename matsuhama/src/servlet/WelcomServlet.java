@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,19 +28,22 @@ public class WelcomServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		List<SnowBean> list = new ArrayList<>();
 		SnowDAO2 snowDAO2 = new SnowDAO2();
 		list = snowDAO2.findAll();
 
-		request.setAttribute("list", list);
-		String hoge = "hogehoge";
-		request.setAttribute("hoge", hoge);
-		if (list.size() != 0)
-
-		{
+		if (list.size() == 0) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/snow.jsp");
 			dispatcher.forward(request, response);
+		} else {
+
+			response.setContentType("text/html; charset=Shift_JIS");
+			PrintWriter out = response.getWriter();
+			for (int i = 0; i < list.size(); i++) {
+				out.println(list.get(i).getName());
+				out.println(list.get(i).getText());
+			}
+
 		}
 	}
 

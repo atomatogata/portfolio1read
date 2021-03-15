@@ -3,7 +3,7 @@
 <%@ page import="java.util.List,model.SnowBean" %>
 
 <%
-List<SnowBean> lister = (List<SnowBean>)request.getAttribute("list");
+List<SnowBean> list = (List<SnowBean>)request.getAttribute("list");
 String hoge = (String)session.getAttribute("hoge");
 
 %>
@@ -16,10 +16,7 @@ String hoge = (String)session.getAttribute("hoge");
 <body>
 snow
 <a href="/matsuhama/WelcomServlet">書き込む</a>
-<% if(lister == null){ %>
-<p><%= "失敗" %></p>
-<%} %>
-${hogehoge}
-<%= lister.size() %>
+
+
 </body>
 </html>

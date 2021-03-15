@@ -1,12 +1,19 @@
 package test;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import dao.SnowDAO2;
+import model.SnowBean;
+
 public class tesuto {
 
 	public static void main(String[] args) {
-		String name = "tokiha";
-		String text = "kanenari";
-		String sql = "INSERT INTO SNOWREQUEST VALUES('" + name + "', '" + text + "')";
-		System.out.println(sql);
+		List<SnowBean> list = new ArrayList<>();
+		SnowDAO2 snowDAO2 = new SnowDAO2();
+		list = snowDAO2.findAll();
+
+		System.out.println(list.size());
 
 	}
 

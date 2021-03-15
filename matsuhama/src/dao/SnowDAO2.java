@@ -19,8 +19,9 @@ public class SnowDAO2 {
 	public List<SnowBean> findAll() {
 		List<SnowBean> list = new ArrayList<>();
 
-		try (Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS)) {
-
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
 			String sql = "SELECT * FROM SNOWREQUEST";
 			Statement smt = con.createStatement();
 			ResultSet rs = smt.executeQuery(sql);
@@ -29,11 +30,14 @@ public class SnowDAO2 {
 
 				String name = rs.getString("NAME");
 				String text = rs.getString("TEXT");
-				SnowBean snowBeans = new SnowBean(name, text);
-				list.add(snowBeans);
+				SnowBean snowBean = new SnowBean(name, text);
+				list.add(snowBean);
 
 			}
+			con.close();
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list;
