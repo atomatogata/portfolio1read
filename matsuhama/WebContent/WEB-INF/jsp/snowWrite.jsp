@@ -8,7 +8,7 @@
 </head>
 <body>
 snowWrite
-<form action="/matsuhama/SnowWriter" method="post">
+<form action="/matsuhama/SnowWriter" method="POST">
 名前：
 <input type="text" name="name">
 内容：

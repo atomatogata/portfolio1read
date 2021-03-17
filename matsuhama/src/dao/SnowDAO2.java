@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,15 +23,17 @@ public class SnowDAO2 {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
-			String sql = "SELECT * FROM SNOWREQUEST";
+			String sql = "SELECT * FROM SNOWRESQUE";
 			Statement smt = con.createStatement();
 			ResultSet rs = smt.executeQuery(sql);
 
 			while (rs.next()) {
 
+				int id = rs.getInt("ID");
 				String name = rs.getString("NAME");
 				String text = rs.getString("TEXT");
-				SnowBean snowBean = new SnowBean(name, text);
+				Timestamp created = rs.getTimestamp("CREATED");
+				SnowBean snowBean = new SnowBean(id, name, text, created);
 				list.add(snowBean);
 
 			}
@@ -48,7 +51,7 @@ public class SnowDAO2 {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
-			String sql = "INSERT INTO SNOWREQUEST VALUES('" + name + "', '" + text + "')";
+			String sql = "INSERT INTO SNOWRESQUE (NAME, TEXT) VALUES('" + name + "', '" + text + "')";
 			Statement smt = con.createStatement();
 			smt.executeUpdate(sql);
 
@@ -57,6 +60,22 @@ public class SnowDAO2 {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void delete(int deleteId) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
+			String sql = "DELETE FROM SNOWRESQUE WHERE ID = " + deleteId;
+			Statement smt = con.createStatement();
+			smt.executeUpdate(sql);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }
