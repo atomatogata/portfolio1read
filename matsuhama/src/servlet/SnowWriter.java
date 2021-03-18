@@ -18,14 +18,14 @@ public class SnowWriter extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
-		String name = request.getParameter("name");
-		String text = request.getParameter("text");
-		SnowDAO2 snowDAO2 = new SnowDAO2();
-		snowDAO2.insert(name, text);
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WelcomServlet");
-		dispatcher.forward(request, response);
+		//		request.setCharacterEncoding("UTF-8");
+		//		String name = request.getParameter("name");
+		//		String text = request.getParameter("text");
+		//		SnowDAO2 snowDAO2 = new SnowDAO2();
+		//		snowDAO2.insert(name, text);
+		//
+		//		RequestDispatcher dispatcher = request.getRequestDispatcher("/WelcomServlet");
+		//		dispatcher.forward(request, response);
 
 	}
 

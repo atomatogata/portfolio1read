@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.SnowDAO2;
 import model.SnowBean;
@@ -30,8 +31,8 @@ public class WelcomServlet extends HttpServlet {
 		List<SnowBean> list = new ArrayList<>();
 		SnowDAO2 snowDAO2 = new SnowDAO2();
 		list = snowDAO2.findAll();
-		request.setCharacterEncoding("UTF-8");
-		request.setAttribute("list", list);
+		HttpSession session = request.getSession();
+		session.setAttribute("list", list);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/snow.jsp");
 		dispatcher.forward(request, response);

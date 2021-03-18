@@ -3,7 +3,7 @@
 <%@ page import="java.util.List,model.SnowBean" %>
 
 <%
-List<SnowBean> list = (List<SnowBean>)request.getAttribute("list");
+List<SnowBean> list = (List<SnowBean>)session.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -14,14 +14,14 @@ List<SnowBean> list = (List<SnowBean>)request.getAttribute("list");
 <body>
 snow
 <a href="/matsuhama/WelcomServlet">書き込む</a><br>
-<form action="/matsuhama/SnowUpdate" method="POST">
-<input type="submit" value="削除">
+<form action="/matsuhama/SnowUpdateControll" method="POST">
+<input type="submit" value="削除/変更する">
 <% for(int i = 0;i < list.size();i++) { %>
 <table>
 <tr>
 <th>
-<input type="radio" name="deleteId" value="<%= list.get(i).getId() %>">
-<%= list.get(i).getId() %></th>
+<input type="radio" name="alterId" value="<%= i + 1 %>">
+<%= i + 1 %></th>
 <td><%= list.get(i).getName() %></td>
 <td><%= list.get(i).getText() %></td>
 <td><%= list.get(i).getCreated() %></td>

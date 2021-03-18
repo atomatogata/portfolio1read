@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -69,6 +70,25 @@ public class SnowDAO2 {
 			String sql = "DELETE FROM SNOWRESQUE WHERE ID = " + deleteId;
 			Statement smt = con.createStatement();
 			smt.executeUpdate(sql);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void update(String name, String text, int alterId) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
+			String sql = "UPDATE SNOWRESQUE SET NAME = ?,TEXT = ? WHERE ID = ?";
+			PreparedStatement pStmt = con.prepareStatement(sql);
+			pStmt.setString(1, name);
+			pStmt.setString(2, text);
+			pStmt.setInt(3, alterId);
+			pStmt.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
