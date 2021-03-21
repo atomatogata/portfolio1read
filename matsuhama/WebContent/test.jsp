@@ -1,14 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.List,model.SnowBean" %>
-
-<%
-List<SnowBean> list = (List<SnowBean>)session.getAttribute("list");
-int alterId = Integer.parseInt(request.getParameter("alterId"));
-int primaryId = list.get(alterId -1).getId();
-session.setAttribute("primaryId", primaryId);
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,13 +7,7 @@ session.setAttribute("primaryId", primaryId);
 <title>Insert title here</title>
 </head>
 <body>
-<p>snowAlter</p>
-primary_key:<%= session.getAttribute("primaryId") %>
-<form action="/matsuhama/SnowUpdate" method="GET">
-<input type="submit" value="削除">
-</form>
-<form action="/matsuhama/SnowUpdate" method="POST">
-種類：
+<form action="">
 <select name="type">
 <%
 String name1 = "";
@@ -31,7 +16,7 @@ String name3 = "";
 String name4 = "";
 String name5 = "";
 String name6 = "";
-switch(list.get(alterId - 1).getType()){
+switch(6){
 case 1:
 	name1 = "selected";
 	break;
@@ -59,18 +44,7 @@ case 6:
 <option value="3"<%= name3 %>>急がないけれど、助けて欲しい！ </option>
 <option value="4"<%= name4 %>>ボランティアを募集しています！ </option>
 <option value="5"<%= name5 %>>重大！すぐに助けて！</option>
-<option value="6"<%= name6 %>> その他  </option>
-</select>
-名前：
-<input type="text" name="name" value="<%= list.get(alterId - 1).getName() %>">
-内容：
-<input type="text" name="text" value="<%= list.get(alterId - 1).getText() %>">
-<input type="submit" value="変更">
+<option value="6"<%= name6 %>>その他</option>
 </form>
-
-
-
-
-
 </body>
 </html>

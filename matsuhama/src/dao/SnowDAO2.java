@@ -24,17 +24,19 @@ public class SnowDAO2 {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
-			String sql = "SELECT * FROM SNOWRESQUE";
+			String sql = "SELECT * FROM SNOWRESQUE AS A JOIN RESQUETYPE AS B ON A.TYPE = B.TYPE";
 			Statement smt = con.createStatement();
 			ResultSet rs = smt.executeQuery(sql);
 
 			while (rs.next()) {
 
 				int id = rs.getInt("ID");
+				int type = rs.getInt("TYPE");
+				String discription = rs.getString("DISCRIPTION");
 				String name = rs.getString("NAME");
 				String text = rs.getString("TEXT");
 				Timestamp created = rs.getTimestamp("CREATED");
-				SnowBean snowBean = new SnowBean(id, name, text, created);
+				SnowBean snowBean = new SnowBean(id, type, discription, name, text, created);
 				list.add(snowBean);
 
 			}
@@ -47,12 +49,13 @@ public class SnowDAO2 {
 		return list;
 	}
 
-	public void insert(String name, String text) {
+	public void insert(int type, String name, String text) {
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
-			String sql = "INSERT INTO SNOWRESQUE (NAME, TEXT) VALUES('" + name + "', '" + text + "')";
+			String sql = "INSERT INTO SNOWRESQUE (TYPE, NAME, TEXT) VALUES(" + type + ", '" + name + "', '" + text
+					+ "')";
 			Statement smt = con.createStatement();
 			smt.executeUpdate(sql);
 
@@ -79,15 +82,16 @@ public class SnowDAO2 {
 
 	}
 
-	public void update(String name, String text, int alterId) {
+	public void update(int type, String name, String text, int alterId) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
-			String sql = "UPDATE SNOWRESQUE SET NAME = ?,TEXT = ? WHERE ID = ?";
+			String sql = "UPDATE SNOWRESQUE SET TYPE = ?,NAME = ?,TEXT = ? WHERE ID = ?";
 			PreparedStatement pStmt = con.prepareStatement(sql);
-			pStmt.setString(1, name);
-			pStmt.setString(2, text);
-			pStmt.setInt(3, alterId);
+			pStmt.setInt(1, type);
+			pStmt.setString(2, name);
+			pStmt.setString(3, text);
+			pStmt.setInt(4, alterId);
 			pStmt.executeUpdate();
 
 		} catch (SQLException e) {

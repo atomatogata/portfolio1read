@@ -25,6 +25,8 @@ snow
 <td><%= list.get(i).getName() %></td>
 <td><%= list.get(i).getText() %></td>
 <td><%= list.get(i).getCreated() %></td>
+<td><%= list.get(i).getType() %></td>
+<td><%= list.get(i).getDiscription() %></td>
 </tr>
 </table>
 <% } %>

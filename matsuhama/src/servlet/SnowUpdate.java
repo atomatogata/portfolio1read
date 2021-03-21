@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,16 +45,14 @@ public class SnowUpdate extends HttpServlet {
 		HttpSession session = request.getSession();
 		int primaryId = (int) session.getAttribute("primaryId");
 		request.setCharacterEncoding("UTF-8");
+		int type = Integer.parseInt(request.getParameter("type"));
 		String name = request.getParameter("name");
 		String text = request.getParameter("text");
 		SnowDAO2 snowDAO2 = new SnowDAO2();
-		snowDAO2.update(name, text, primaryId);
+		snowDAO2.update(type, name, text, primaryId);
 
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.println(name);
-		out.println(text);
-		out.println(primaryId);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/snow.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

@@ -33,10 +33,11 @@ public class SnowWriter extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
+		int type = Integer.parseInt(request.getParameter("type"));
 		String name = request.getParameter("name");
 		String text = request.getParameter("text");
 		SnowDAO2 snowDAO2 = new SnowDAO2();
-		snowDAO2.insert(name, text);
+		snowDAO2.insert(type, name, text);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WelcomServlet");
 		dispatcher.forward(request, response);

@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 
 public class SnowBean {
 	private int id;
+	private int type;
+	private String discription;
 	private String name;
 	private String text;
 	private Timestamp created;
@@ -11,8 +13,10 @@ public class SnowBean {
 	public SnowBean() {
 	};
 
-	public SnowBean(int id, String name, String text, Timestamp created) {
+	public SnowBean(int id, int type, String discription, String name, String text, Timestamp created) {
 		this.id = id;
+		this.type = type;
+		this.discription = discription;
 		this.name = name;
 		this.text = text;
 		this.created = created;
@@ -48,6 +52,22 @@ public class SnowBean {
 
 	public void setCreated(Timestamp created) {
 		this.created = created;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public String getDiscription() {
+		return discription;
+	}
+
+	public void setDiscription(String discription) {
+		this.discription = discription;
 	}
 
 }
