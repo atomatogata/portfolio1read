@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <h1><a href="index.html"><img src="img/toplogo.png" alt="ポートフォリオへようこそ！"></a></h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="index.html">はじめに</a></li>
+        <li><a href="vision.html">ビジョン</a></li>
+        <li><a href="db.html">DB</a></li>
+        <li><a href="function.html">機能</a></li>
+        <li><a href="diary.html">日誌</a></li>
+        <li><a href="loadmap.html">これから</a></li>
+      </ul>
+    </nav>
+    <main>
+      <div class="hazimeni">
+        <h2>開発日誌</h2>
+        <div class="log">
+          <table>
+            <tr>
+              <td>
+                2021/03/14<br>
+                リモートリポジトリ作成、 ポートフォリオに着手<br>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                2021/03/14<br>
+                簡単な設計図をIThoghtsにて作成<br>
+                Entity(SnowBean.java)の作成<br>
+                DAO(SnowDAO.java)の作成<br>
+                自作のDAOTest作成<br>
+                DAOでDBに検索指示をした値がちゃんと戻ってきて出力できるかのテスト→成功（テスト作るの楽しい）<br>
+                コントローラとビューの作成<br>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                2021/03/16<br>
+                DBエラーで作業が２日止まる→JDBCドライバーを設定していなかった<br>
+                書き込み機能追加<br>
+                DAOにINSERT機能を追加<br>
+                書き込み用jspを作成<br>
+                シンプルなベースの完成<br>
+                （ここから小さな機能改善を小さいサイクルでやっていくイメージ？）<br>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                2021/03/17<br>
+                herokuにデプロイ失敗（まだ手をつけないで制作の方に時間をかけるよう助言をいただく）<br>
+                DELETEの処理を追加したい<br>
+                SQLのテーブルにprimary key(id),更新時間(created)の追加<br>
+                SQLから取得し、JSPに出力、出力形式をHTMLのラジオボタンにし、それぞれの送信する値にSQLのIDを代入<br>
+                ラジオボタンで選択→削除するボタンクリックで削除実装完了<br>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                2021/03/18<br>
+                内容変更（UPDATE)の実装予定
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                2021/03/19<br>
+                内容変更（UPDATE)の実装完了
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                2021/03/21<br>
+                リレーションシップの導入<br>
+                既存テーブルにカラム追加（type)<br>
+                テーブル２作成（type,discription)<br>
+                テーブルとテーブル２をJOINで関連付け<br>
+                書き込みで、種類（type）をプルダウンで選んで,書き込み/変更ができるようになった<br>
+                プルダウンメニューに選択した種類をデフォルトで表示させるために少々無理なコードになってしまった<br>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="foot">
+        <p><a href="loadmap.html">進む</a></p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy;Copyright A-tomato corp. All rights reserved.</p>
+
+    </footer>
+  </div>
+
+</body>
+
+</html>
