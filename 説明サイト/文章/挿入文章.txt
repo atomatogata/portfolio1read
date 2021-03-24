@@ -1,0 +1,32 @@
+はじめに
+
+    今年の新潟での大雪に、協力することの大切さを強く感じ
+    何かその思いを形にしたいと思い制作しました
+
+ビジョン
+    ・地図上で会話ができるような
+    ・地元のカフェのようなコミュニケーションスペースを確保する
+    ・アプリ使用可能区域を地元限定にた地本特化のアプリ
+
+DB構造
+    テーブル SNOWRESQUE
+        フィールド 型
+        ID INT PIMARY KEY AUTO_INCREMENT
+        TYPE INT 投稿内容の種類
+        SOLUTION INT 解決済みなら1,未解決なら2
+        NAME VARCHAR(100) 投稿者名
+        TEXT VARCHAR(100) 投稿内容
+        CREATED DATETIME CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        
+    テーブル RESQUETYPE
+        フィールド 型
+        TYPE INT SNOWRESQUEのTYPEと紐づけ
+        DISCRIPTION VARCHAR(100) 投稿内容の種類の具体的な内容
+        
+        
+機能
+    書き込み機能
+    変更機能
+    削除機能
+
+開発ログ
