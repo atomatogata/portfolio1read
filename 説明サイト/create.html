@@ -27,15 +27,18 @@
             </ul>
         </nav>
         <main>
-            <div class="hazimeni">
-                <ul>
-                    <li><a href="read.html">読み込み</a></li>
-                    <li><a href="create.html">書き込み</a></li>
-                    <li><a href="update.html">更新</a></li>
-                    <li><a href="delete.html">削除</a></li>
-                </ul>
-                <h2>書き込み機能</h2>
-                <p>メインページよ利、書き込み機能をご紹介します<br></p>
+            <div class="function">
+
+                <div class="hazimeni">
+                    <ul>
+                        <li><a href="read.html">読み込み</a></li>
+                        <li><a href="create.html">書き込み</a></li>
+                        <li><a href="update.html">更新</a></li>
+                        <li><a href="delete.html">削除</a></li>
+                    </ul>
+                    <h2>書き込み機能</h2>
+                    <p>メインページよ利、書き込み機能をご紹介します<br></p>
+                </div>
                 <!-- functionブロックテンプレート -->
                 <div class="function-box">
                     <!-- ブロックテンプレート -->
@@ -94,46 +97,22 @@ snow
                 <code>
                   <h3>WelcomeServlet.java</h3>
                <!-- &lt; -->
-package servlet;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import dao.SnowDAO2;
-import model.SnowBean;
-
 @WebServlet("/WelcomServlet")
 public class WelcomServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+protected void doPost(HttpServletRequest request, HttpServletResponse response)
+throws ServletException, IOException {
+List&lt;SnowBean> list = new ArrayList&lt;>();
+SnowDAO2 snowDAO2 = new SnowDAO2();
+list = snowDAO2.findAll();
+HttpSession session = request.getSession();
+session.setAttribute("list", list);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/snowWrite.jsp");
-		dispatcher.forward(request, response);
-	}
+RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/snow.jsp");
+dispatcher.forward(request, response);
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		List&lt;SnowBean> list = new ArrayList&lt;>();
-		SnowDAO2 snowDAO2 = new SnowDAO2();
-		list = snowDAO2.findAll();
-		HttpSession session = request.getSession();
-		session.setAttribute("list", list);
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/snow.jsp");
-		dispatcher.forward(request, response);
-
-	}
+}
 
 }
 
@@ -196,41 +175,20 @@ snowWrite
                 <code>
                   <h3>SnowWriter</h3>
                <!-- &lt; -->
-               package servlet;
 
-import java.io.IOException;
+protected void doPost(HttpServletRequest request, HttpServletResponse response)
+throws ServletException, IOException {
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+request.setCharacterEncoding("UTF-8");
+int type = Integer.parseInt(request.getParameter("type"));
+String name = request.getParameter("name");
+String text = request.getParameter("text");
+SnowDAO2 snowDAO2 = new SnowDAO2();
+snowDAO2.insert(type, name, text);
 
-import dao.SnowDAO2;
-
-@WebServlet("/SnowWriter")
-public class SnowWriter extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		request.setCharacterEncoding("UTF-8");
-		int type = Integer.parseInt(request.getParameter("type"));
-		String name = request.getParameter("name");
-		String text = request.getParameter("text");
-		SnowDAO2 snowDAO2 = new SnowDAO2();
-		snowDAO2.insert(type, name, text);
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WelcomServlet");
-		dispatcher.forward(request, response);
-	}
+RequestDispatcher dispatcher = request.getRequestDispatcher("/WelcomServlet");
+dispatcher.forward(request, response);
+}
 
 }
 
@@ -253,25 +211,25 @@ public class SnowWriter extends HttpServlet {
                <!-- &lt; -->
            
 
-	public void update(int type, String name, String text, int alterId) {
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
-			String sql = "UPDATE SNOWRESQUE SET TYPE = ?,NAME = ?,TEXT = ? WHERE ID = ?";
-			PreparedStatement pStmt = con.prepareStatement(sql);
-			pStmt.setInt(1, type);
-			pStmt.setString(2, name);
-			pStmt.setString(3, text);
-			pStmt.setInt(4, alterId);
-			pStmt.executeUpdate();
+public void update(int type, String name, String text, int alterId) {
+try {
+Class.forName("com.mysql.cj.jdbc.Driver");
+Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
+String sql = "UPDATE SNOWRESQUE SET TYPE = ?,NAME = ?,TEXT = ? WHERE ID = ?";
+PreparedStatement pStmt = con.prepareStatement(sql);
+pStmt.setInt(1, type);
+pStmt.setString(2, name);
+pStmt.setString(3, text);
+pStmt.setInt(4, alterId);
+pStmt.executeUpdate();
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+} catch (SQLException e) {
+e.printStackTrace();
+} catch (Exception e) {
+e.printStackTrace();
+}
 
-	}
+}
 
 }
 

@@ -51,6 +51,8 @@ header img{
   background-color: #D5E0F1;
   height: auto;
   padding-left: 100px;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
 }
 
 nav ul{
@@ -103,6 +105,15 @@ padding: 0.3em;
   border-left:0;
 }
 
+.hazimeni p a{
+ color: #C7243A; 
+}
+
+.hazimeni p a:hover{
+  background-color: #3261AB;
+}
+
+
 .hazi{
   border: 1px solid #3261AB;
   padding: 0.3em;
@@ -134,6 +145,14 @@ td,tr{
 background-color: #fff;;
 }
 
+.loadmap{
+  text-align: center;
+}
+
+.loadmap-img img{
+width: 70%;
+}
+
 .foot{
   text-align: center;
   margin: 1em auto;
@@ -151,14 +170,33 @@ color: #3261AB;
   background-color: #F3C759;
 }
 
+.hazimeni ul{
+display: flex;
+}
+
+.hazimeni ul li{
+ flex: 1 1 auto;
+ /* border-radius: 70%; */
+ background-color: #EDAD0B;
+ border: 0.1px solid #000000;
+ padding: 0.3em;
+}
+
+.hazimeni ul li:hover{
+  background-color: #F3C759;
+}
+
 .box{
 }
+
 .box-image img{
-width: 960px;
+width: 60%;
 height: auto;
 }
 
 .box-code{
+  width: 60%;
+  /* overflow: hidden; */
 }
 
 .box-comment{
