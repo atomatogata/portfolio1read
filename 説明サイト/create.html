@@ -35,7 +35,7 @@
                     <li><a href="delete.html">削除</a></li>
                 </ul>
                 <h2>書き込み機能</h2>
-                <p>添えコメント<br></p>
+                <p>メインページよ利、書き込み機能をご紹介します<br></p>
                 <!-- functionブロックテンプレート -->
                 <div class="function-box">
                     <!-- ブロックテンプレート -->
@@ -87,12 +87,12 @@ snow
                 </pre>
                         </div>
                         <div class="box-comment">
-                            <p>コメント</p>
+                            <p>メインページから書き込みボタンでWelcomeServlet.javaにGET送信します</p>
                         </div>
                         <div class="box-code">
                             <pre>
                 <code>
-                  <h3>snow.jsp</h3>
+                  <h3>WelcomeServlet.java</h3>
                <!-- &lt; -->
 package servlet;
 
@@ -142,7 +142,7 @@ public class WelcomServlet extends HttpServlet {
                 </pre>
                         </div>
                         <div class="box-comment">
-                            <p>コメント</p>
+                            <p>GETのリクエストをそのままsnowWriter.jspへ画面遷移します</p>
                         </div>
                     </div>
                     <!-- ブロックテンプレート -->
@@ -187,6 +187,9 @@ snowWrite
                <!-- &lt; -->
                 </code>
                 </pre>
+                        </div>
+                        <div class="box-comment">
+                            <p>入力画面です<br>投稿ボタンでSnowWriter.javaにPOST送信します</p>
                         </div>
                         <div class="box-code">
                             <pre>
@@ -236,7 +239,49 @@ public class SnowWriter extends HttpServlet {
                 </pre>
                         </div>
                         <div class="box-comment">
-                            <p>コメント</p>
+                            <p>入力された値をSnowDAO2.javaに渡してDBと連携しています</p>
+                        </div>
+                    </div>
+                    <!-- ブロックテンプレート -->
+                    <!-- ブロックテンプレート -->
+                    <div class="box">
+
+                        <div class="box-code">
+                            <pre>
+                <code>
+                  <h3>SnowDAO2.java</h3>
+               <!-- &lt; -->
+           
+
+	public void update(int type, String name, String text, int alterId) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
+			String sql = "UPDATE SNOWRESQUE SET TYPE = ?,NAME = ?,TEXT = ? WHERE ID = ?";
+			PreparedStatement pStmt = con.prepareStatement(sql);
+			pStmt.setInt(1, type);
+			pStmt.setString(2, name);
+			pStmt.setString(3, text);
+			pStmt.setInt(4, alterId);
+			pStmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}
+
+               <!-- &lt; -->
+                </code>
+                </pre>
+                        </div>
+                        <div class="box-comment">
+                            <p>データベースにアクセスし、更新しています</p>
+                            <p>実装中はここで一番ハマってしまいました<br>解決法が分からず、土日で先生にも聞けなかったため、最終的に質問サイトを利用して解決することができました</p>
                         </div>
                     </div>
                     <!-- ブロックテンプレート -->
@@ -245,17 +290,9 @@ public class SnowWriter extends HttpServlet {
                         <div class="box-image">
                             <img src="img/write_end.png" alt="画像">
                         </div>
-                        <div class="box-code">
-                            <pre>
-                <code>
-                  <h3>title</h3>
-               <!-- &lt; -->
-               <!-- &lt; -->
-                </code>
-                </pre>
-                        </div>
+                        
                         <div class="box-comment">
-                            <p>コメント</p>
+                            <p>先ほどの入力が反映されています</p>
                         </div>
                     </div>
                     <!-- ブロックテンプレート -->
@@ -274,10 +311,12 @@ public class SnowWriter extends HttpServlet {
             <p>&copy;Copyright A-tomato corp. All rights reserved.</p>
 
         </footer>
-    </div>
-    <!--   コード色付け-->
-    <script>
+        <!--   コード色付け-->
+        <script>
         hljs.highlightAll();
     </script>
     <!--   コード色付け-->
-</body></html>
+</div>
+</body>
+
+</html>

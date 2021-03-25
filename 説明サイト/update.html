@@ -89,10 +89,55 @@ snow
                         </div>
                         <div class="box-comment">
                             <p>コメント変更したい項目にチェックをいれ削除／変更ボタンを押します</p>
+                            <p>入力値（alterId)と共にSnowUpdateControll.javaへ</p>
                         </div>
                     </div>
-                    <!-- ブロックテンプレート -->
-                    <!-- ブロックテンプレート -->
+                    <!-- ブロックテンプレートend -->
+                    <!-- ブロックテンプレートstart -->
+                    <div class="box">
+
+                        <div class="box-code">
+                            <pre>
+                <code>
+                  <h3>SnowUpdateControll.java</h3>
+               <!-- &lt; -->
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		request.setCharacterEncoding("UTF-8");
+		int alterId = 0;
+
+		try {
+			alterId = Integer.parseInt(request.getParameter("alterId"));
+			request.setAttribute("alterId", alterId);
+		} catch (NumberFormatException e) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println(e + "未選択です"
+					+ "&lt;a href=\"/matsuhama/\">戻る&lt;/a>");
+		}
+
+		if (alterId > 0) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/snowAlter.jsp");
+			dispatcher.forward(request, response);
+		}
+
+	}
+
+}
+
+               <!-- &lt; -->
+                </code>
+                </pre>
+                        </div>
+                        <div class="box-comment">
+                            <p>alterIdをリクエストスコープに保存し、snowAlter.jspへ画面遷移</p>
+                        </div>
+                    </div>
+                    <!-- ブロックテンプレートend -->
+                    <!-- ブロックテンプレートstart -->
                     <div class="box">
                         <div class="box-image">
                             <img src="img/update_2.png" alt="画像">
@@ -100,18 +145,96 @@ snow
                         <div class="box-code">
                             <pre>
                 <code>
-                  <h3>title</h3>
+                  <h3>snowAlter.jsp</h3>
                <!-- &lt; -->
+           &lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+               pageEncoding="UTF-8"%>
+           &lt;%@ page import="java.util.List,model.SnowBean" %>
+           
+           &lt;%
+           List&lt;SnowBean> list = (List&lt;SnowBean>)session.getAttribute("list");
+           int alterId = Integer.parseInt(request.getParameter("alterId"));
+           int primaryId = list.get(alterId -1).getId();
+           session.setAttribute("primaryId", primaryId);
+           %>
+           
+           &lt;!DOCTYPE html>
+           &lt;html>
+           &lt;head>
+           &lt;meta charset="UTF-8">
+           &lt;title>Insert title here&lt;/title>
+           &lt;/head>
+           &lt;body>
+           &lt;p>snowAlter&lt;/p>
+           primary_key:&lt;%= session.getAttribute("primaryId") %>
+           &lt;form action="/matsuhama/SnowUpdate" method="GET">
+           &lt;input type="submit" value="削除">
+           &lt;/form>
+           &lt;form action="/matsuhama/SnowUpdate" method="POST">
+           種類：
+           &lt;select name="type">
+           &lt;%
+           String name1 = "";
+           String name2 = "";
+           String name3 = "";
+           String name4 = "";
+           String name5 = "";
+           String name6 = "";
+           switch(list.get(alterId - 1).getType()){
+           case 1:
+               name1 = "selected";
+               break;
+           case 2:
+               name2 = "selected";
+               break;
+           case 3:
+               name3 = "selected";
+               break;
+           case 4:
+               name4 = "selected";
+               break;
+           case 5:
+               name5 = "selected";
+               break;
+           case 6:
+               name6 = "selected";
+               break;
+           }
+           
+           
+           %>
+           &lt;option value="1"&lt;%= name1 %>>なんとかしたいと思っている &lt;/option>
+           &lt;option value="2"&lt;%= name2 %>>危険な場所なので注意して！&lt;/option>
+           &lt;option value="3"&lt;%= name3 %>>急がないけれど、助けて欲しい！ &lt;/option>
+           &lt;option value="4"&lt;%= name4 %>>ボランティアを募集しています！ &lt;/option>
+           &lt;option value="5"&lt;%= name5 %>>重大！すぐに助けて！&lt;/option>
+           &lt;option value="6"&lt;%= name6 %>> その他  &lt;/option>
+           &lt;/select>
+           名前：
+           &lt;input type="text" name="name" value="&lt;%= list.get(alterId - 1).getName() %>">
+           内容：
+           &lt;input type="text" name="text" value="&lt;%= list.get(alterId - 1).getText() %>">
+           &lt;input type="submit" value="変更">
+           &lt;/form>
+           
+           
+           
+           
+           
+           &lt;/body>
+           &lt;/html>
                <!-- &lt; -->
                 </code>
                 </pre>
                         </div>
                         <div class="box-comment">
-                            <p>コメント</p>
+                            <p>alterIdをprimaryIdに変換してDBから値を取得しデフォルト値に出力しています<br>
+                                プルダウンリストのデフォルト表示はHTMLタグに空白を入れるような構造になっているため今後改善の余地がありますが、このコードは自分で考えて試行錯誤した場所でもあるので思い入れがあります
+                            </p>
                         </div>
                     </div>
-                    <!-- ブロックテンプレート -->
-                    <!-- ブロックテンプレート -->
+                    <!-- ブロックテンプレートend -->
+                    <!-- ブロックテンプレートstart -->
                     <div class="box">
                         <div class="box-image">
                             <img src="img/update_3.png" alt="画像">
@@ -119,8 +242,63 @@ snow
                         <div class="box-code">
                             <pre>
                 <code>
-                  <h3>title</h3>
+                  <h3>SnowUpdate</h3>
                <!-- &lt; -->
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		int primaryId = (int) session.getAttribute("primaryId");
+		request.setCharacterEncoding("UTF-8");
+		int type = Integer.parseInt(request.getParameter("type"));
+		String name = request.getParameter("name");
+		String text = request.getParameter("text");
+		SnowDAO2 snowDAO2 = new SnowDAO2();
+		snowDAO2.update(type, name, text, primaryId);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/snow.jsp");
+		dispatcher.forward(request, response);
+	}
+
+}
+
+               <!-- &lt; -->
+                </code>
+                </pre>
+                        </div>
+                        <div class="box-comment">
+                            <p>デフォルト値を変更して変更ボタンを押下<br>SnowUpdate.javaにPOST送信され、SnowDAO2によりDBとやりとりします</p>
+                        </div>
+                    </div>
+                    <!-- ブロックテンプレート -->
+                    <!-- ブロックテンプレート -->
+                    <div class="box">
+                        <div class="box-code">
+                            <pre>
+                <code>
+                  <h3>SnowDAO2</h3>
+               <!-- &lt; -->
+
+	public void update(int type, String name, String text, int alterId) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
+			String sql = "UPDATE SNOWRESQUE SET TYPE = ?,NAME = ?,TEXT = ? WHERE ID = ?";
+			PreparedStatement pStmt = con.prepareStatement(sql);
+			pStmt.setInt(1, type);
+			pStmt.setString(2, name);
+			pStmt.setString(3, text);
+			pStmt.setInt(4, alterId);
+			pStmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
                <!-- &lt; -->
                 </code>
                 </pre>
@@ -135,17 +313,8 @@ snow
                         <div class="box-image">
                             <img src="img/update_end.png" alt="画像">
                         </div>
-                        <div class="box-code">
-                            <pre>
-                <code>
-                  <h3>title</h3>
-               <!-- &lt; -->
-               <!-- &lt; -->
-                </code>
-                </pre>
-                        </div>
                         <div class="box-comment">
-                            <p>コメント</p>
+                            <p>変更内容が更新されました</p>
                         </div>
                     </div>
                     <!-- ブロックテンプレート -->
@@ -164,10 +333,12 @@ snow
             <p>&copy;Copyright A-tomato corp. All rights reserved.</p>
 
         </footer>
+        <!--   コード色付け-->
+        <script>
+            hljs.highlightAll();
+        </script>
+        <!--   コード色付け-->
     </div>
-    <!--   コード色付け-->
-    <script>
-        hljs.highlightAll();
-    </script>
-    <!--   コード色付け-->
-</body></html>
+</body>
+
+</html>

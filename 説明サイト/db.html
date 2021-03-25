@@ -24,69 +24,72 @@
       <div class="hazimeni">
         <h2>DBテーブル</h2>
         <p>使用DB: MySQL</p>
-        <table>
-          <tr>
-            <th>テーブル名</th>
-            <td>フィールド</td>
-            <td>型</td>
-            <td>説明</td>
-          </tr>
-          <tr>
-            <th rowspan="7">SNOWRESQUE</th>
-          </tr>
-          <tr>
-            <td>ID</td>
-            <td>INT</td>
-            <td>PIMARY KEY AUTO_INCREMENT</td>
-          </tr>
-          <tr>
-            <td>TYPE</td>
-            <td>INT</td>
-            <td>投稿内容の種類</td>
-          </tr>
-          <tr>
-            <td>SOLUTION</td>
-            <td>INT</td>
-            <td>解決済みなら1,未解決なら2</td>
-          </tr>
-          <tr>
-            <td>NAME</td>
-            <td>VARCHAR(100)</td>
-            <td>投稿者名</td>
-          </tr>
-          <tr>
-            <td>TEXT</td>
-            <td>VARCHAR(100)</td>
-            <td>投稿内容</td>
-          </tr>
-          <tr>
-            <td>CREATED</td>
-            <td>DATETIME</td>
-            <td>更新日時</td>
-          </tr>
-        </table>
-
-        <table>
-          <tr>
-            <th>テーブル名</th>
-            <td>フィールド</td>
-            <td>型</td>
-            <td>説明</td>
-          </tr>
-          <tr>
-            <th rowspan="3">RESQUETYPE</th>
-          </tr>
-          <tr>
-            <td>TYPE</td>
-            <td>TYPE</td>
-            <td>SNOWRESQUEのTYPEと紐づけ</td>
-          </tr>
-          <tr>
-            <td>DISCRIPTION</td>
-            <td>VARCHAR(100)</td>
-            <td>投稿内容の種類の具体的な内容</td>
-          </tr>
-        </table>
+        <div class="tables">
+          <table>
+            <tr class="tra">
+              <th>テーブル名</th>
+              <td>フィールド</td>
+              <td>型</td>
+              <td>説明</td>
+            </tr>
+            <div class="tda">
+              <tr>
+                <th rowspan="7">SNOWRESQUE</th>
+              </tr>
+              <tr>
+                <td>ID</td>
+                <td>INT</td>
+                <td>PIMARY KEY AUTO_INCREMENT</td>
+              </tr>
+              <tr>
+                <td>TYPE</td>
+                <td>INT</td>
+                <td>投稿内容の種類</td>
+              </tr>
+              <tr>
+                <td>SOLUTION</td>
+                <td>INT</td>
+                <td>解決済みなら1,未解決なら2</td>
+              </tr>
+              <tr>
+                <td>NAME</td>
+                <td>VARCHAR(100)</td>
+                <td>投稿者名</td>
+              </tr>
+              <tr>
+                <td>TEXT</td>
+                <td>VARCHAR(100)</td>
+                <td>投稿内容</td>
+              </tr>
+              <tr>
+                <td>CREATED</td>
+                <td>DATETIME</td>
+                <td>更新日時</td>
+              </tr>
+            </div>
+          </table>
+          <table>
+            <tr class="tra">
+              <th>テーブル名</th>
+              <td>フィールド</td>
+              <td>型</td>
+              <td>説明</td>
+            </tr>
+            <tr>
+              <th rowspan="3">RESQUETYPE</th>
+            </tr>
+            <tr>
+              <td>TYPE</td>
+              <td>TYPE</td>
+              <td>SNOWRESQUEのTYPEと紐づけ</td>
+            </tr>
+            <tr>
+              <td>DISCRIPTION</td>
+              <td>VARCHAR(100)</td>
+              <td>投稿内容の種類の具体的な内容</td>
+            </tr>
+          </table>
+        </div>
         
       </div>
       <div class="foot">

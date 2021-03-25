@@ -38,7 +38,7 @@
                 <p>追加した機能をコードと共に説明していきます<br></p>
                 <!-- functionブロックテンプレート -->
                 <div class="function-box">
-                    <!-- ブロックテンプレート -->
+                    <!-- ブロックテンプレートstart -->
                     <div class="box">
                         <div class="box-image">
                             <img src="img/delete_1.png" alt="画像">
@@ -46,18 +46,94 @@
                         <div class="box-code">
                             <pre>
                 <code>
-                  <h3>title</h3>
+                  <h3>snow.jsp</h3>
                <!-- &lt; -->
+               &lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+&lt;%@ page import="java.util.List,model.SnowBean" %>
+
+&lt;%
+List&lt;SnowBean> list = (List&lt;SnowBean>)session.getAttribute("list");
+%>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+&lt;meta charset="UTF-8">
+&lt;title>Insert title here&lt;/title>
+&lt;/head>
+&lt;body>
+snow
+&lt;a href="/matsuhama/WelcomServlet">書き込む&lt;/a>&lt;br>
+&lt;form action="/matsuhama/SnowUpdateControll" method="POST">
+&lt;input type="submit" value="削除/変更する">
+&lt;table>
+&lt;% for(int i = 0;i &lt; list.size();i++) { %>
+&lt;tr>
+&lt;th>
+&lt;input type="radio" name="alterId" value="&lt;%= i + 1 %>">
+&lt;%= i + 1 %>&lt;/th>
+&lt;td>&lt;%= list.get(i).getName() %>&lt;/td>
+&lt;td>&lt;%= list.get(i).getText() %>&lt;/td>
+&lt;td>&lt;%= list.get(i).getCreated() %>&lt;/td>
+&lt;td>&lt;%= list.get(i).getType() %>&lt;/td>
+&lt;td>&lt;%= list.get(i).getDiscription() %>&lt;/td>
+&lt;/tr>
+&lt;% } %>
+&lt;/table>
+&lt;/form>
+&lt;/body>
+&lt;/html>
                <!-- &lt; -->
                 </code>
                 </pre>
                         </div>
                         <div class="box-comment">
-                            <p>コメント</p>
+                            <p>先ほどの更新と同じ画面遷移です</p>
                         </div>
                     </div>
-                    <!-- ブロックテンプレート -->
-                    <!-- ブロックテンプレート -->
+                    <!-- ブロックテンプレートend -->
+                    <!-- ブロックテンプレートstart -->
+                    <div class="box">
+                        <div class="box-image">
+                            <img src="img/exception.png" alt="画像">
+                        </div>
+                        <div class="box-code">
+                            <pre>
+                <code>
+                  <h3>title</h3>
+               <!-- &lt; -->
+               protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		request.setCharacterEncoding("UTF-8");
+		int alterId = 0;
+
+		try {
+			alterId = Integer.parseInt(request.getParameter("alterId"));
+			request.setAttribute("alterId", alterId);
+		} catch (NumberFormatException e) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println(e + "未選択です"
+					+ "&lt;a href=\"/matsuhama/\">戻る&lt;/a>");
+		}
+
+		if (alterId > 0) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/snowAlter.jsp");
+			dispatcher.forward(request, response);
+		}
+
+	}
+               <!-- &lt; -->
+                </code>
+                </pre>
+                        </div>
+                        <div class="box-comment">
+                            <p>なお、チェックボクスを洗濯しなかった場合はNull画面になります</p>
+                        </div>
+                    </div>
+                    <!-- ブロックテンプレートend -->
+                    <!-- ブロックテンプレートstart -->
                     <div class="box">
                         <div class="box-image">
                             <img src="img/delete_2.png" alt="画像">
@@ -65,36 +141,76 @@
                         <div class="box-code">
                             <pre>
                 <code>
-                  <h3>title</h3>
+                  <h3>SnowUpdate</h3>
                <!-- &lt; -->
+               protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
+		int primaryId = (int) session.getAttribute("primaryId");
+		request.setCharacterEncoding("UTF-8");
+		SnowDAO2 snowDAO2 = new SnowDAO2();
+		snowDAO2.delete(primaryId);
+		List&lt;SnowBean> list = new ArrayList&lt;>();
+		list = snowDAO2.findAll();
+		session.setAttribute("list", list);
+
+		if (primaryId > 0) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/snow.jsp");
+			dispatcher.forward(request, response);
+		}
+	}
                <!-- &lt; -->
                 </code>
                 </pre>
                         </div>
                         <div class="box-comment">
-                            <p>コメント</p>
+                            <p>GET送信によりalterId(primaryId)で選択した項目をSnowDAO2.javaを通じて削除します</p>
                         </div>
                     </div>
-                    <!-- ブロックテンプレート -->
-                    <!-- ブロックテンプレート -->
+                    <!-- ブロックテンプレートend -->
+                    <!-- ブロックテンプレートstart -->
+                    <div class="box">
+                        <div class="box-code">
+                            <pre>
+                <code>
+                  <h3>SnowDAO2.java</h3>
+               <!-- &lt; -->
+               public void delete(int deleteId) {
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
+                    String sql = "DELETE FROM SNOWRESQUE WHERE ID = " + deleteId;
+                    Statement smt = con.createStatement();
+                    smt.executeUpdate(sql);
+        
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+        
+            }
+               <!-- &lt; -->
+                </code>
+                </pre>
+                        </div>
+                        <div class="box-comment">
+                            <p>SnowDAO2のdelete()メソッドにより削除</p>
+                        </div>
+                    </div>
+                    <!-- ブロックテンプレートend -->
+                    <!-- ブロックテンプレートstart -->
                     <div class="box">
                         <div class="box-image">
                             <img src="img/delete_end.png" alt="画像">
                         </div>
-                        <div class="box-code">
-                            <pre>
-                <code>
-                  <h3>title</h3>
-               <!-- &lt; -->
-               <!-- &lt; -->
-                </code>
-                </pre>
-                        </div>
+                        
                         <div class="box-comment">
-                            <p>コメント</p>
+                            <p>削除が反映されました</p>
                         </div>
                     </div>
-                    <!-- ブロックテンプレート -->
+                    <!-- ブロックテンプレートend -->
                 </div>
                 <!-- functionブロックテンプレート -->
 
@@ -110,13 +226,13 @@
             <p>&copy;Copyright A-tomato corp. All rights reserved.</p>
 
         </footer>
-    </div>
-    <!--   コード色付け-->
-    <script>
+        <!--   コード色付け-->
+        <script>
         hljs.highlightAll();
 
     </script>
     <!--   コード色付け-->
+</div>
 </body>
 
 </html>
