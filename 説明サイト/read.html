@@ -2,66 +2,66 @@
 <html lang="jp">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <div class="wrapper">
-    <header>
-      <h1><a href="index.html"><img src="img/toplogo.png" alt="ポートフォリオへようこそ！"></a></h1>
-    </header>
-    <nav>
-      <ul>
-        <li><a href="index.html">はじめに</a></li>
-        <li><a href="vision.html">ビジョン</a></li>
-        <li><a href="db.html">DB</a></li>
-        <li><a href="function.html">機能</a></li>
-        <li><a href="diary.html">日誌</a></li>
-        <li><a href="loadmap.html">これから</a></li>
-      </ul>
-    </nav>
-    <main>
-      <div class="hazimeni">
-        <ul>
-          <li><a href="read.html">読み込み</a></li>
-          <li><a href="create.html">書き込み</a></li>
-          <li><a href="update.html">更新</a></li>
-          <li><a href="delete.html">削除</a></li>
-        </ul>
-        <h2>読み込み機能</h2>
-        <p>追加した機能をコードと共に説明していきます<br></p>
-        <!-- functionブロックテンプレート -->
-        <div class="function-box">
-          <!-- ブロックテンプレート -->
-          <div class="box">
-            <div class="box-image">
-              <img src="" alt="画像">
-            </div>
-            <div class="box-code">
-              <pre>
+    <div class="wrapper">
+        <header>
+            <h1><a href="index.html"><img src="img/toplogo.png" alt="ポートフォリオへようこそ！"></a></h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">はじめに</a></li>
+                <li><a href="vision.html">ビジョン</a></li>
+                <li><a href="db.html">DB</a></li>
+                <li><a href="function.html">機能</a></li>
+                <li><a href="diary.html">日誌</a></li>
+                <li><a href="loadmap.html">これから</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div class="hazimeni">
+                <ul>
+                    <li><a href="read.html">読み込み</a></li>
+                    <li><a href="create.html">書き込み</a></li>
+                    <li><a href="update.html">更新</a></li>
+                    <li><a href="delete.html">削除</a></li>
+                </ul>
+                <h2>読み込み機能</h2>
+                <p>追加した機能をコードと共に説明していきます<br></p>
+                <!-- functionブロックテンプレート -->
+                <div class="function-box">
+                    <!-- ブロックテンプレート -->
+                    <div class="box">
+                        <div class="box-image">
+                            <img src="" alt="画像">
+                        </div>
+                        <div class="box-code">
+                            <pre>
                 <code>
                   <h3>title</h3>
                <!-- &lt; -->
                <!-- &lt; -->
                 </code>
                 </pre>
-            </div>
-            <div class="box-comment">
-              <p>コメント</p>
-            </div>
-          </div>
-          <!-- ブロックテンプレート -->
-        </div>
-        <!-- functionブロックテンプレート -->
-        <div class="function-box">
-          <div class="box">
-            <div class="box-image">
-              <img src="img/index.png" alt="画像">
-            </div>
-            <div class="box-code">
-              <pre>
+                        </div>
+                        <div class="box-comment">
+                            <p>コメント</p>
+                        </div>
+                    </div>
+                    <!-- ブロックテンプレート -->
+                </div>
+                <!-- functionブロックテンプレート -->
+                <div class="function-box">
+                    <div class="box">
+                        <div class="box-image">
+                            <img src="img/index.png" alt="画像">
+                        </div>
+                        <div class="box-code">
+                            <pre>
                 <code>
             <h3>index.jsp</h3>
            &lt;%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -81,13 +81,13 @@
            &lt;/html>
                 </code>
                 </pre>
-            </div>
-            <div class="box-comment">
-              <p>最初に表示されるトップページです<br>コントローラであるWelcomServletへ遷移します</p>
-            </div>
-          </div>
-          <div class="box-code">
-            <pre>
+                        </div>
+                        <div class="box-comment">
+                            <p>最初に表示されるトップページです<br>コントローラであるWelcomServletへ遷移します</p>
+                        </div>
+                    </div>
+                    <div class="box-code">
+                        <pre>
               <code>
                 <h3>WelcomServlet.java</h3>
                 package servlet;
@@ -120,7 +120,7 @@
                 
                   protected void doPost(HttpServletRequest request, HttpServletResponse response)
                       throws ServletException, IOException {
-                    List<SnowBean> list = new ArrayList<>();
+                    List&lt;SnowBean> list = new ArrayList&lt;>();
                     SnowDAO2 snowDAO2 = new SnowDAO2();
                     list = snowDAO2.findAll();
                     HttpSession session = request.getSession();
@@ -135,17 +135,17 @@
                 
               </code>
               </pre>
-          </div>
-          <div class="box-comment">
-            <p>POST送信をキャッチしてDBに最新情報を問い合わせセッションに保存、snow.jspに遷移します</p>
-          </div>
-          <!-- ブロックテンプレート -->
-          <div class="box">
-            <div class="box-image">
-              <img src="img/write_1.png" alt="画像">
-            </div>
-            <div class="box-code">
-              <pre>
+                    </div>
+                    <div class="box-comment">
+                        <p>POST送信をキャッチしてDBに最新情報を問い合わせセッションに保存、snow.jspに遷移します</p>
+                    </div>
+                    <!-- ブロックテンプレート -->
+                    <div class="box">
+                        <div class="box-image">
+                            <img src="img/write_1.png" alt="画像">
+                        </div>
+                        <div class="box-code">
+                            <pre>
                 <code>
                   <h3>snow.jsp</h3>
               &lt;%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -185,29 +185,27 @@
               &lt;/html>
                 </code>
                 </pre>
+                        </div>
+                        <div class="box-comment">
+                            <p>先ほど保存したセッションから最新情報を取得し表示します ここがこのアプリのメインページです</p>
+                        </div>
+                    </div>
+                    <!-- ブロックテンプレート -->
+                </div>
+
             </div>
-            <div class="box-comment">
-              <p>先ほど保存したセッションから最新情報を取得し表示します ここがこのアプリのメインページです</p>
-            </div>
-          </div>
-          <!-- ブロックテンプレート -->
-        </div>
-
-      </div>
 
 
 
-  </div>
-  <div class="foot">
-    <p><a href="create.html">進む</a></p>
-  </div>
-  </main>
-  <footer>
-    <p>&copy;Copyright A-tomato corp. All rights reserved.</p>
+    </div>
+    <div class="foot">
+        <p><a href="create.html">進む</a></p>
+    </div>
+    </main>
+    <footer>
+        <p>&copy;Copyright A-tomato corp. All rights reserved.</p>
 
-  </footer>
-  </div>
+    </footer>
+    </div>
 
-</body>
-
-</html>
+</body></html>
