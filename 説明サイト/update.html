@@ -46,14 +46,49 @@
                         <div class="box-code">
                             <pre>
                 <code>
-                  <h3>title</h3>
+                  <h3>snow.jsp</h3>
                <!-- &lt; -->
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+&lt;%@ page import="java.util.List,model.SnowBean" %>
+
+&lt;%
+List&lt;SnowBean> list = (List&lt;SnowBean>)session.getAttribute("list");
+%>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+&lt;meta charset="UTF-8">
+&lt;title>Insert title here&lt;/title>
+&lt;/head>
+&lt;body>
+snow
+&lt;a href="/matsuhama/WelcomServlet">書き込む&lt;/a>&lt;br>
+&lt;form action="/matsuhama/SnowUpdateControll" method="POST">
+&lt;input type="submit" value="削除/変更する">
+&lt;% for(int i = 0;i &lt; list.size();i++) { %>
+&lt;table>
+&lt;tr>
+&lt;th>
+&lt;input type="radio" name="alterId" value="&lt;%= i + 1 %>">
+&lt;%= i + 1 %>&lt;/th>
+&lt;td>&lt;%= list.get(i).getName() %>&lt;/td>
+&lt;td>&lt;%= list.get(i).getText() %>&lt;/td>
+&lt;td>&lt;%= list.get(i).getCreated() %>&lt;/td>
+&lt;td>&lt;%= list.get(i).getType() %>&lt;/td>
+&lt;td>&lt;%= list.get(i).getDiscription() %>&lt;/td>
+&lt;/tr>
+&lt;/table>
+&lt;% } %>
+&lt;/form>
+&lt;/body>
+&lt;/html>
                <!-- &lt; -->
                 </code>
                 </pre>
                         </div>
                         <div class="box-comment">
-                            <p>コメント</p>
+                            <p>コメント変更したい項目にチェックをいれ削除／変更ボタンを押します</p>
                         </div>
                     </div>
                     <!-- ブロックテンプレート -->
@@ -133,9 +168,6 @@
     <!--   コード色付け-->
     <script>
         hljs.highlightAll();
-
     </script>
     <!--   コード色付け-->
-</body>
-
-</html>
+</body></html>
