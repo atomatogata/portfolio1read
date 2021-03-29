@@ -16,8 +16,8 @@ snow
 <a href="/matsuhama/WelcomServlet">書き込む</a><br>
 <form action="/matsuhama/SnowUpdateControll" method="POST">
 <input type="submit" value="削除/変更する">
-<% for(int i = 0;i < list.size();i++) { %>
 <table>
+<% for(int i = 0;i < list.size();i++) { %>
 <tr>
 <th>
 <input type="radio" name="alterId" value="<%= i + 1 %>">
@@ -28,8 +28,8 @@ snow
 <td><%= list.get(i).getType() %></td>
 <td><%= list.get(i).getDiscription() %></td>
 </tr>
-</table>
 <% } %>
+</table>
 </form>
 </body>
 </html>
