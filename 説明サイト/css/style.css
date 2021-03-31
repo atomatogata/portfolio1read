@@ -153,6 +153,17 @@ background-color: #fff;
     background-color: #3261AB;
 }
 
+.zikosyoukai-s{
+    border-top: 1px dotted #91DBB9;
+}
+.zikosyoukai-e{
+    border-bottom:1px dotted #91DBB9 ;
+}
+
+.tugiha{
+    text-align: center;
+}
+
 
 .hazi {
     border: 1px solid #3261AB;
@@ -185,6 +196,7 @@ background-color: #fff;
 
 .tables th {
     vertical-align: middle;
+    text-align: center;
 }
 
 
@@ -198,10 +210,18 @@ tr {
     background-color: #3DB680;
 }
 
-.tda {
-    background-color: #fff;
-    ;
+.tra2 {
+    background-color: #C7243A;
 }
+
+.tda1 {
+    background-color: #fff;
+}
+
+.tda1 th,td{
+    padding: 0.4em;
+}
+
 
 .loadmap {
     text-align: center;
@@ -251,17 +271,88 @@ tr {
     width: 60%;
     height: auto;
 }
-
 .box-code {
     width: 60%;
     /* overflow: hidden; */
 }
-
 .box-comment {}
 
 .log table {
     margin: 1em auto;
 }
+
+.function{
+    text-align: center;
+    background-color: #6A8CC7;
+}
+.func{
+    border: 1px solid #000000;
+    margin-top: 2em;
+}
+
+.func h2{
+    font-size: 28px;
+    padding: 0.3em;
+    background-color: #F3C759;
+}
+
+.func p{
+    border: 2px solid #000000;
+    font-size: 24px;
+    background-color:#91DBB9;
+    text-align: left;
+    padding: 0.1em;
+}
+
+.func-box{
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #000000;
+}
+.func-img{
+    flex: 0 0 60%;
+    border: 1px solid #000000;
+}
+
+.func-img p{
+    padding: 0.3em;
+    font-size: 24px;
+}
+.func-img img{
+    width:100%;
+}
+.func-text{
+    flex:0 0 40%;
+    border: 1px solid #000000;
+    background-color: azure;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  flex-wrap: wrap; */
+  text-align: left;
+}
+
+.func-text h3{
+    /* flex: 1 1 100%; */
+    /* margin-top: 37px; */
+    font-size: 22px;
+    padding: 0.3em;
+}
+.func-text ul{
+    /* flex :1 1 100%; */
+    padding-left: 1em;
+}
+
+#func-next p{
+    border: 0px;
+    text-align: center;
+    /* display: inline-block; */
+    background-color: #6A8CC7;
+    color: #fff;
+    font-size: 16px;
+}
+
 
 footer {
     position: absolute;
