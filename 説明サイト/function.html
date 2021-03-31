@@ -61,19 +61,17 @@
         <!-- 大枠始め -->
         <div class="func">
           <h2>①一覧参照機能</h2>
-          <p>タイトル画面です</p>
+          <p>最初に表示されるトップページです</p>
           <!-- 内枠始め -->
           <div class="func-box">
             <div class="func-img">
               <img src="img/index.png" alt="">
             </div>
             <div class="func-text">
-              <h3>小見出し</h3>
+              <h3>クリック</h3>
               <ul>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
+                <li>コントローラであるWelcomServletへ遷移します</li>
+                <li>解POST送信をキャッチしてDBに最新情報を問い合わせセッションに保存、snow.jspに遷移します</li>
               </ul>
             </div>
           </div>
@@ -88,12 +86,9 @@
               <img src="img/write_1.png" alt="">
             </div>
             <div class="func-text">
-              <h3>小見出し</h3>
+              <h3>表示</h3>
               <ul>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
+                <li>先ほど保存したセッションから最新情報を取得し表示します ここがこのアプリのメインページです</li>
               </ul>
             </div>
           </div>
@@ -104,18 +99,15 @@
         <div class="func">
           <h2>②追加機能</h2>
           <!-- 内枠始め -->
-          <p>タイトル</p>
+          <p>メインページ</p>
           <div class="func-box">
             <div class="func-img">
               <img src="img/write_1.png" alt="">
             </div>
             <div class="func-text">
-              <h3>小見出し</h3>
+              <h3>書き込むをクリック</h3>
               <ul>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
+                <li>メインページから書き込むクリックで入力ページへ画面遷移します</li>
               </ul>
             </div>
           </div>
@@ -124,18 +116,18 @@
           </div>
           <!-- 内枠終わり -->
           <!-- 内枠始め -->
-          <p>タイトル</p>
+          <p>入力ページ</p>
           <div class="func-box">
             <div class="func-img">
               <img src="img/write_2.png" alt="">
             </div>
             <div class="func-text">
-              <h3>小見出し</h3>
+              <h3>入力して投稿するをクリック</h3>
               <ul>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
+                <li>種類：では投稿の種類を選択できます</li>
+                <li>名前と内容を入力します</li>
+                <li>値はデータベースに保管されます</li>
+                <li>まだ実装してませんが、nullを拒否する機能や、HTMLのタグなどの特殊文字をを処理する機能をつける予定です</li>
               </ul>
             </div>
           </div>
@@ -144,23 +136,18 @@
           </div>
           <!-- 内枠終わり -->
           <!-- 内枠始め -->
-          <p>タイトル</p>
+          <p>メインページに戻ります</p>
           <div class="func-box">
             <div class="func-img">
               <img src="img/write_end.png" alt="">
             </div>
             <div class="func-text">
-              <h3>小見出し</h3>
+              <h3>書き込み内容の反映</h3>
               <ul>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
+                <li>先ほど入力した値が反映されています</li>
+                <li>実装中はここで一番ハマってしまいました解決法が分からず、土日で先生にも聞けなかったため、最終的に質問サイトを利用して解決することができました</li>
               </ul>
             </div>
-          </div>
-          <div id="func-next">
-            <p>↓</p>
           </div>
           <!-- 内枠終わり -->
         </div>
@@ -169,18 +156,15 @@
         <div class="func">
           <h2>③更新機能</h2>
           <!-- 内枠始め -->
-          <p>タイトル</p>
+          <p>メインページ</p>
           <div class="func-box">
             <div class="func-img">
               <img src="img/update_1.png" alt="">
             </div>
             <div class="func-text">
-              <h3>小見出し</h3>
+              <h3>変更したい値の選択</h3>
               <ul>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
+                <li>コメント変更したい項目にチェックをいれ削除／変更ボタンを押します</li>
               </ul>
             </div>
           </div>
@@ -189,7 +173,7 @@
           </div>
           <!-- 内枠終わり -->
           <!-- 内枠始め -->
-          <p>タイトル</p>
+          <p>変更ページ</p>
           <div class="func-box">
             <div class="func-img">
               <img src="img/update_2.png" alt="">
@@ -197,10 +181,8 @@
             <div class="func-text">
               <h3>小見出し</h3>
               <ul>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
+                <li>先ほどの洗濯した値がデフォルト出力されています</li>
+                <li>プルダウンリストのデフォルト表示はHTMLタグに空白を入れるような構造になっているため今後改善の余地がありますが、このコードは自分で考えて試行錯誤した場所でもあるので思い入れがあります</li>
               </ul>
             </div>
           </div>
@@ -209,18 +191,15 @@
           </div>
           <!-- 内枠終わり -->
           <!-- 内枠始め -->
-          <p>タイトル</p>
+          <p>変更ページ</p>
           <div class="func-box">
             <div class="func-img">
               <img src="img/update_3.png" alt="">
             </div>
             <div class="func-text">
-              <h3>小見出し</h3>
+              <h3>値の変更、変更確定</h3>
               <ul>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
+                <li>フォルト値を変更して変更ボタンを押下</li>
               </ul>
             </div>
           </div>
@@ -229,18 +208,15 @@
           </div>
           <!-- 内枠終わり -->
           <!-- 内枠始め -->
-          <p>タイトル</p>
+          <p>メインページ</p>
           <div class="func-box">
             <div class="func-img">
               <img src="img/update_end.png" alt="">
             </div>
             <div class="func-text">
-              <h3>小見出し</h3>
+              <h3>結果表示</h3>
               <ul>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
+                <li>変更内容が更新されました</li>
               </ul>
             </div>
           </div>
@@ -254,18 +230,15 @@
         <div class="func">
           <h2>④削除機能</h2>
           <!-- 内枠始め -->
-          <p>タイトル</p>
+          <p>メインページ</p>
           <div class="func-box">
             <div class="func-img">
               <img src="img/delete_1.png" alt="">
             </div>
             <div class="func-text">
-              <h3>小見出し</h3>
+              <h3>削除する値を選択</h3>
               <ul>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
+                <li>削除する値をチェックして削除ボタンをクリックします</li>
               </ul>
             </div>
           </div>
@@ -274,18 +247,15 @@
           </div>
           <!-- 内枠終わり -->
           <!-- 内枠始め -->
-          <p>タイトル</p>
+          <p>チェックをつけないでクリックした場合</p>
           <div class="func-box">
             <div class="func-img">
               <img src="img/exception.png" alt="">
             </div>
             <div class="func-text">
-              <h3>小見出し</h3>
+              <h3>例外表示となります</h3>
               <ul>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
+                <li>例外文を表示することがセキュリティ上よろしくないとのことでこのページは自動的にインデックスに戻るように変える予定です</li>
               </ul>
             </div>
           </div>
@@ -294,18 +264,16 @@
           </div>
           <!-- 内枠終わり -->
           <!-- 内枠始め -->
-          <p>タイトル</p>
+          <p>削除ページ</p>
           <div class="func-box">
             <div class="func-img">
               <img src="img/delete_2.png" alt="">
             </div>
             <div class="func-text">
-              <h3>小見出し</h3>
+              <h3>削除内容の表示</h3>
               <ul>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
+                <li>変更の場合と同じくデフォルト値により削除内容を確認できます</li>
+                <li>削除ボタンを押して削除します</li>
               </ul>
             </div>
           </div>
@@ -314,23 +282,17 @@
           </div>
           <!-- 内枠終わり -->
           <!-- 内枠始め -->
-          <p>タイトル</p>
+          <p>メインページ</p>
           <div class="func-box">
             <div class="func-img">
               <img src="img/delete_end.png" alt="">
             </div>
             <div class="func-text">
-              <h3>小見出し</h3>
+              <h3>削除の確認</h3>
               <ul>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
-                <li>解説解説解説解説解説解説</li>
+                <li>先ほど選んだ項目が削除されているのが確認できます</li>
               </ul>
             </div>
-          </div>
-          <div id="func-next">
-            <p>↓</p>
           </div>
           <!-- 内枠終わり -->
         </div>
@@ -338,7 +300,7 @@
       </div>
       <!-- 外枠終わり -->
       <div class="foot">
-        <p><a href="function.html">進む</a></p>
+        <p><a href="loadmap.html">次：開発段階今の現状と今後どうしたいか</a></p>
       </div>
     </main>
     <footer>

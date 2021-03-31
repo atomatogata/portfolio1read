@@ -233,7 +233,9 @@ tr {
 
 .foot {
     text-align: center;
-    margin: 1em auto;
+    margin: 0 auto;
+    padding: 1em 0;;
+    background-color: #6A8CC7;
 }
 
 .foot a {
