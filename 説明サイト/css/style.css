@@ -117,10 +117,17 @@ margin-top: 1em;
 background-color: #fff;
 }
 
+#divin{
+    text-align: center;
+    padding: 0.3em;
+}
+
 .inline{
     display: inline-block;
     border-bottom: 1px dotted #3261AB;
 }
+
+
 
 .hazimeni-img h2 {
     font-size: 20px;
@@ -160,6 +167,10 @@ background-color: #fff;
     border-bottom:1px dotted #91DBB9 ;
 }
 
+.ziko-syoukai{
+    background-color: #fff;
+}
+
 .tugiha{
     text-align: center;
 }
@@ -186,6 +197,15 @@ background-color: #fff;
 
 .ziko p{
     padding: 0.6em;
+}
+
+.ziko a{
+    color: #C7243A;
+}
+
+.ziko a:hover{
+    background-color: #000000;
+    color: #F3C759;
 }
 
 
@@ -235,7 +255,7 @@ tr {
     text-align: center;
     margin: 0 auto;
     padding: 1em 0;;
-    background-color: #6A8CC7;
+    background-color: azure;
 }
 
 .foot a {
@@ -249,6 +269,10 @@ tr {
 
 .foot a:hover {
     background-color: #F3C759;
+}
+
+#footx{
+    background-color: #6A8CC7;
 }
 
 .hazimeni ul {
@@ -288,7 +312,7 @@ tr {
     background-color: #6A8CC7;
 }
 .func{
-    border: 1px solid #000000;
+    /* border: 1px solid #000000; */
     margin-top: 2em;
 }
 
@@ -299,21 +323,21 @@ tr {
 }
 
 .func p{
-    border: 2px solid #000000;
-    font-size: 24px;
+    /* border: 2px solid #000000; */
+    font-size: 20px;
     background-color:#91DBB9;
-    text-align: left;
-    padding: 0.1em;
+    text-align: center;
+    padding: 0.3em;
 }
 
 .func-box{
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid #000000;
+    /* border: 1px solid #000000; */
 }
 .func-img{
     flex: 0 0 60%;
-    border: 1px solid #000000;
+    /* border: 1px solid #000000; */
 }
 
 .func-img p{
@@ -340,10 +364,17 @@ tr {
     /* margin-top: 37px; */
     font-size: 22px;
     padding: 0.3em;
+    /* text-align: center; */
+    /* background-color: #C7243A; */
 }
 .func-text ul{
     /* flex :1 1 100%; */
-    padding-left: 1em;
+    padding-left: 2em;
+    list-style-type: disc;
+}
+
+.func-text ul li{
+    padding: 0.3em;
 }
 
 #func-next p{
@@ -360,6 +391,6 @@ footer {
     position: absolute;
     bottom: 0;
     text-align: center;
-    background-color: #6A8CC7;
+    background-color: #D5E0F1;
     width: 100%;
 }
