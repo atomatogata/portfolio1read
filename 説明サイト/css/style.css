@@ -80,7 +80,7 @@ nav ul li {
 }
 
 .app1 img {
-    width: 50%;
+    width: 80%;
     border-radius: 20%;
     /* margin: 1em; */
 }
@@ -233,6 +233,7 @@ tr {
 .tra2 {
     background-color: #C7243A;
 }
+
 
 .tda1 {
     background-color: #fff;
