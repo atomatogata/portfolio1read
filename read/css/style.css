@@ -308,6 +308,16 @@ tr {
     margin: 1em auto;
 }
 
+.hukan{
+    text-align: center;
+}
+
+.hukan img{
+    width: 50%;
+    height: auto;
+
+}
+
 .function{
     text-align: center;
     background-color: #6A8CC7;
